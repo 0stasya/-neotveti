@@ -1,0 +1,323 @@
+1 задание:  Реализуйте класс Person с полями name, age, и методами для доступа к этим полям. ВЫПОЛНЕНИЕ: В КЛАССЕ MAIN  
+public class Main {
+    public static void main(String[] args) {
+        // Создаем объекты класса Person
+        Person person1 = new Person("Иван", 30);
+        Person person2 = new Person();
+        person2.setName("Петр");
+        person2.setAge(25);
+
+        // Выводим информацию о людях
+        person1.printInfo();
+        person2.printInfo();
+
+        person2.setAge(-5); //Проверка на отрицательный возраст
+        person2.printInfo();
+    }
+}    И КЛАСС PERSON  
+public class Person {
+    private String name;
+    private int age;
+
+    // Конструктор без параметров
+    public Person() {
+        this.name = "Unknown"; // Значение по умолчанию
+        this.age = 0; // Значение по умолчанию
+    }
+
+    // Конструктор с параметрами
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Геттер для имени
+    public String getName() {
+        return name;
+    }
+
+    // Сеттер для имени
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Геттер для возраста
+    public int getAge() {
+        return age;
+    }
+
+    // Сеттер для возраста
+    public void setAge(int age) {
+        if (age >= 0) { // Проверка на корректность возраста
+            this.age = age;
+        } else {
+            System.out.println("Возраст не может быть отрицательным!");
+        }
+    }
+
+    // Метод для вывода информации о человеке
+    public void printInfo() {
+        System.out.println("Имя: " + name + ", Возраст: " + age);
+    }
+
+}
+
+
+
+2 задание Напишите метод, который принимает массив чисел и возвращает их сумму:  в МЭЙНЕ ПИШЕМ  public class Main {
+    public static void main(String[] args) {
+    int[] arrayname = {1,2,3,4,5};
+    int sum = sumArray(arrayname);
+    System.out.println("Сумма элементов массива равна" + sum);
+    }
+} В КЛАССЕ  SumArray  пишем  public static int sumArray(int[] numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        return sum;
+    }
+
+3 задание  Создайте класс Rectangle с полями width и height и методом для вычисления площади. : В МЭЙНЕ Rectangle rect = new Rectangle(5, 10);
+    System.out.println("Площадь прямоугольника: " + rect.getArea());
+    } в классе RECTANGLE  double width;
+    double height;
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public double getArea() {
+        return (width * height) \ 2;
+    }
+
+4 ЗАДАНИЕ Реализуйте программу, которая проверяет, является ли число четным или нечетным.: В МЭЙНЕ   Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите целое число: ");
+        int number = scanner.nextInt();
+
+        if (number % 2 == 0) {
+            System.out.println(number + " - четное число.");
+        } else {
+            System.out.println(number + " - нечетное число.");
+        }
+        scanner.close();
+
+
+5 ЗАДАНИЕ: Напишите метод, который проверяет, является ли данное число простым. В МЭЙНЕ    System.out.println(isPrime(2));  // true
+        System.out.println(isPrime(15)); // false
+        System.out.println(isPrime(97)); // true в классе PrimeChecker   
+    public static boolean isPrime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+
+6 ЗАДАНИЕ:  Реализуйте калькулятор с основными операциями (+, -, *, /).  В МЭЙНЕ:    Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите первое число: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Введите операцию (+, -, *, /): ");
+        char operator = scanner.next().charAt(0);
+
+        System.out.print("Введите второе число: ");
+        double num2 = scanner.nextDouble();
+
+        double result;
+
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 == 0) {
+                    System.out.println("Деление на ноль!");
+                    return;
+                }
+                result = num1 / num2;
+                break;
+            default:
+                System.out.println("Неверная операция!");
+                return;
+        }
+
+        System.out.println("Результат: " + result);
+        scanner.close();
+
+7 ЗАДАНИЕ: Напишите программу для сортировки массива чисел методом пузырька. в мэйне:  int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        System.out.println("Массив до сортировки: " + Arrays.toString(arr));
+
+        bubbleSort(arr);
+
+        System.out.println("Массив после сортировки: " + Arrays.toString(arr)); в классе BubbleSort :  public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+8 ЗАДАНИЕ: Создайте класс Animal с методом makeSound и наследников Dog и Cat с переопределением метода. В МЭЙНЕ    Animal genericAnimal = new Animal();
+        Dog dog = new Dog();
+        Cat cat = new Cat();
+
+        genericAnimal.makeSound();
+        dog.makeSound();
+        cat.makeSound();  В ЭНИМАЛ    public void makeSound() {
+        System.out.println("Generic animal sound");
+    } в КЭТ     @Override
+    public void makeSound() {
+        System.out.println("MEOW");
+
+    } в ДОГ  @Override
+    public void makeSound() {
+        System.out.println("WOOF");
+    }
+
+
+9 ЗАДАНИЕ:  Реализуйте метод для подсчета количества гласных букв в строке. В МЭЙНЕ:  String str = "Hello, World!";
+        int vowelCount = countVowels(str);
+        System.out.println("Количество гласных: " + vowelCount);  В КЛАССЕ   VowelCounter  public static int countVowels(String str) {
+        int count = 0;
+        char[] vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            for (char vowel : vowels) {
+                if (ch == vowel) {
+                    count++;
+                    break; // Чтобы не считать одну гласную несколько раз
+                }
+            }
+        }
+        return count;
+    }
+
+10 ЗАДАНИЕ: Напишите программу, которая проверяет, является ли строка палиндромом. В МЭЙНЕ: 
+        String str1 = "racecar";
+        String str2 = "hello";
+        String str3 = "A man, a plan, a canal: Panama";
+
+        System.out.println(str1 + " is a palindrome: " + isPalindrome(str1)); // true
+        System.out.println(str2 + " is a palindrome: " + isPalindrome(str2)); // false
+        System.out.println(str3 + " is a palindrome: " + isPalindrome(str3)); // true  В КЛАССЕ  PalindromeChecker    public static boolean isPalindrome(String str) {
+        str = str.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        String reversedStr = new StringBuilder(str).reverse().toString();
+        return str.equals(reversedStr);
+    }
+
+
+
+11 ЗАДАНИЕ:   Создайте интерфейс Playable с методом play и классами Guitar и Piano, реализующими этот интерфейс.  interface Playable {
+    void play();
+}
+
+// Класс Guitar, реализующий интерфейс Playable
+class Guitar implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Играет гитара: strums");
+    }
+}
+
+// Класс Piano, реализующий интерфейс Playable
+class Piano implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Играет фортепиано: plays chords");
+    }
+}  В МЭЙНЕ   Playable guitar = new Guitar();
+        Playable piano = new Piano();
+
+        guitar.play(); // Выведет: Играет гитара: strums
+        piano.play(); // Выведет: Играет фортепиано: plays chords
+
+
+12 ЗАДАНИЕ:   Напишите программу для конвертации температуры из Цельсия в Фаренгейт и обратно. В МЭЙНЕ:  Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите температуру: ");
+        double temperature = scanner.nextDouble();
+
+        System.out.print("Введите исходную шкалу (C или F): ");
+        String fromScale = scanner.next();
+
+        System.out.print("Введите целевую шкалу (C или F): ");
+        String toScale = scanner.next();
+
+
+        double convertedTemperature = convertTemperature(temperature, fromScale, toScale);
+
+        if (!Double.isNaN(convertedTemperature)) {
+            System.out.printf("%.2f°%s = %.2f°%s%n", temperature, fromScale.toUpperCase(), convertedTemperature, toScale.toUpperCase());
+        }
+
+        scanner.close();   В КЛАССЕ TemperatureConverter   public static double convertTemperature(double temperature, String fromScale, String toScale) {
+        if (fromScale.equalsIgnoreCase("C")) {
+            if (toScale.equalsIgnoreCase("F")) {
+                return (temperature * 9 / 5) + 32;
+            } else if (toScale.equalsIgnoreCase("C")) {
+                return temperature;
+            }
+        } else if (fromScale.equalsIgnoreCase("F")) {
+            if (toScale.equalsIgnoreCase("C")) {
+                return (temperature - 32) * 5 / 9;
+            } else if (toScale.equalsIgnoreCase("F")){
+                return temperature;
+            }
+        }
+        System.out.println("Ошибка: Неверные параметры шкалы."); //Сообщение об ошибке
+        return Double.NaN; //Возвращает NaN если конвертация невозможна
+    }
+
+
+13 ЗАДАНИЕ: Реализуйте класс Student с полем grades и методом для вычисления среднего балла. В МЭЙНЕ:     int[] grades = {5, 3, 2, 5, 4};
+        Student student = new Student(grades);
+        double averageGrade = student.calculateAverageGrade();
+        System.out.println("Средний балл: " + averageGrade);  В  КЛАССЕ СТУДЕНТ:   private int[] grades;
+
+    public Student(int[] grades) {
+        this.grades = grades;
+    }
+
+    public double calculateAverageGrade() {
+        if (grades == null || grades.length == 0) {
+            return 0.0;
+        }
+        double sum = 0;
+        for (int grade : grades) {
+            sum += grade;
+        }
+        return sum / grades.length;
+    }
+
+
+14 ЗАДАНИЕ:  Напишите программу для нахождения наибольшего элемента в массиве чисел. В МЭЙНЕ  public static void main(String[] args) {
+        int[] numbers = {10, 5, 20, 15, 30};
+        int largestNumber = findLargest(numbers);
+        System.out.println("Наибольший элемент: " + largestNumber);
+    } в  КЛАССЕ   FindLargest   public static int findLargest(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Массив не может быть пустым");
+        }
+        int largest = arr[0]; // Предполагаем, что первый элемент - наибольший
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > largest) {
+                largest = arr[i];
+            }
+        }
+        return largest;
+    }
